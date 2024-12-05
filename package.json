@@ -36,6 +36,7 @@
     "@coasys/ad4m-vue-hooks": "^0.10.0-rc7.local-ai.4",
     "@coasys/flux-api": "0.10.0-rc7.local-ai.4",
     "@coasys/flux-container": "0.10.0-rc7.local-ai.4",
+    "@coasys/hooks-helpers": "^0.10.0-rc7.local-ai.4",
     "vue": "^3.5.12"
   },
   "devDependencies": {

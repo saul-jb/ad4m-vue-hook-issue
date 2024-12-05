@@ -50,7 +50,7 @@
 
 <script setup lang="ts">
 import { PerspectiveProxy } from "@coasys/ad4m";
-import { useSubjects } from "@coasys/ad4m-vue-hooks";
+import { useSubjects } from "../hooks/useSubjects.js";
 import { ref } from 'vue'
 
 import Todo from "../subjects/Todo";
