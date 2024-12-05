@@ -1,6 +1,12 @@
 <template>
   <div v-if="hasPerspective" :class="styles.appContainer">
-    <TodoView :perspective="perspective" :source="source" />
+    <Suspense>
+      <TodoView :perspective="perspective" :source="source" :timeout="0" />
+    </Suspense>
+
+    <Suspense>
+      <TodoView :perspective="perspective" :source="source" :timeout="1000" />
+    </Suspense>
   </div>
 
   <template v-else>
@@ -21,7 +27,7 @@ type Props = Partial<{
   source: string;
 }>
 
-const { perspective, agent } = defineProps<Props>();
+const { perspective, agent, source } = defineProps<Props>();
 
 const hasPerspective = computed(
   () => perspective?.uuid != null && agent != null

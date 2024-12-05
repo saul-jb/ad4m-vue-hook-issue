@@ -51,7 +51,7 @@
 <script setup lang="ts">
 import { PerspectiveProxy } from "@coasys/ad4m";
 import { useSubjects } from "../hooks/useSubjects.js";
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 import Todo from "../subjects/Todo";
 
@@ -59,12 +59,20 @@ import styles from "../Plugin.module.css";
 
 type Props = {
   perspective: PerspectiveProxy;
-  source: string;
+  source?: string;
+  timeout: number;
 };
 
-const { perspective, source } = defineProps<Props>();
+const { perspective, source, timeout } = defineProps<Props>();
+
+onMounted(async () => {
+  await perspective.ensureSDNASubjectClass(Todo);
+});
 
 const title = ref("")
+
+if (timeout > 0)
+  await new Promise(resolve => setTimeout(resolve, timeout))
 
 const { entries: todos, repo } = useSubjects({
   perspective,
